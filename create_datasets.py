@@ -14,7 +14,7 @@ def load_image(addr):
 	return img
 
 
-def createDataRecord(out_filename, addrs):
+def create_data_record(out_filename, addrs):
 	# open the TFRecords file
 
 	writer = tf.python_io.TFRecordWriter(out_filename)
@@ -54,5 +54,5 @@ for directory in os.listdir(base_path):
 
 train_addrs, test_addrs = train_test_split(addrs, test_size=0.2)
 
-createDataRecord('Data/train.tfrecords', train_addrs)
-createDataRecord('Data/test.tfrecords', test_addrs)
+create_data_record('Data/train.tfrecords', train_addrs)
+create_data_record('Data/test.tfrecords', test_addrs)
