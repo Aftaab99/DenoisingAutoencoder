@@ -22,8 +22,8 @@ class DenoisingAutoEncoder:
 			self.conv3 = tf.nn.leaky_relu(conv2d(self.dropout2, 32, (5, 5), padding='same', use_bias=False))
 			self.pool3 = max_pooling2d(self.conv3, (5, 5), (5, 5))
 			self.dropout3 = dropout(self.pool3, 0.3, training=is_training)
-			self.conv4 = tf.nn.leaky_relu(conv2d(self.dropout3, 64, (3, 3), padding='same', use_bias=False))
-			self.latent_repr = max_pooling2d(self.conv4, (31, 31), (31, 31))
+			self.latent_repr = tf.nn.leaky_relu(conv2d(self.dropout3, 128, (3, 3), padding='same', use_bias=False))
+			# self.latent_repr = max_pooling2d(self.conv4, (5, 5), (5, 5))
 
 		with tf.name_scope('Decoder'):
 			self.upsampling1 = tf.image.resize_images(self.latent_repr, (31, 31),
@@ -40,7 +40,7 @@ class DenoisingAutoEncoder:
 			self.conv8 = tf.nn.leaky_relu(conv2d_transpose(self.upsampling4, 3, (1, 1), padding='same', use_bias=True))
 
 		self.output_image = tf.nn.sigmoid(self.conv8)
-		self.loss = tf.nn.sigmoid_cross_entropy_with_logits(labels=self.target_image, logits=self.output_image)
+		self.loss = tf.losses.mean_squared_error(self.target_image, self.output_image)
 		self.batch_loss = tf.reduce_mean(self.loss)
 
 		self.train_step = optimizer.minimize(self.batch_loss)
@@ -119,9 +119,9 @@ class DenoisingAutoEncoder:
 
 
 d = DenoisingAutoEncoder((1240, 1240, 3), tf.train.AdamOptimizer(), True)
-d.train(10, 5)
-# d.load('Checkpoints/weights-epoch-30loss-0.709/weights-epoch-30loss-0.709.ckpt')
-sample_img = Image.open('/home/aftaab/Datasets/Mi3_Aligned/Batch_001//IMG_20160202_015247Noisy.bmp').convert(
+# d.train(100, 10)
+d.load('Checkpoints/weights-epoch-100loss-0.033/weights-epoch-100loss-0.033.ckpt')
+sample_img = Image.open('/home/aftaab/Datasets/Mi3_Aligned/Batch_017//IMG_20151116_151714Noisy.bmp').convert(
 	'RGB').resize([1240, 1240])
 sample_img_t = np.array(sample_img).reshape((1, 1240, 1240, 3)) / 255.0
 d_img = d.denoise(sample_img_t)
