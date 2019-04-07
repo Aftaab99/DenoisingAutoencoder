@@ -1,4 +1,3 @@
 .idea/
-*.png
 Data/
-Checkpoints/
+__pycache__/
