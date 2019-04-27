@@ -3,3 +3,4 @@ sklearn
 tensorflow
 pillow
 requests
+keras

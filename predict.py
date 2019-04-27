@@ -1,9 +1,8 @@
-import tensorflow as tf
 import numpy as np
 from PIL import Image
 import sys
 import getopt
-from model import DenoisingAutoEncoder
+from model_keras import DAE
 
 
 def main(argv):
@@ -29,13 +28,12 @@ def main(argv):
 		elif opt in ('-o', '--ofile'):
 			output_file = arg
 
-	input_image = Image.open(input_file).convert('RGB').resize([3000, 3000])
-	input_image_array = np.array(input_image).reshape(3000, 3000, 3)
-	input_image_array = input_image_array / 255.0
-	d = DenoisingAutoEncoder((50, 50, 3), (None, 50, 50, 3), tf.train.AdamOptimizer(), False)
-
+	input_image = Image.open(input_file).convert('RGB')
+	input_image_array = np.array(input_image)
+	d = DAE()
+	d.load_model_weights('model_weights.hdf5')
 	output_image = d.denoise(input_image_array)
-	output_image.save(output_file, format='PNG')
+	output_image.save(output_file, format='BMP')
 
 
 if __name__ == '__main__':

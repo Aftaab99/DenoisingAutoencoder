@@ -13,11 +13,11 @@ def _bytes_feature(value):
 
 def extract_patches(ref, noisy):
 	patch_list = []
-	for x in range(50, 3000, 50):
-		for y in range(50, 3000, 50):
-			patch_ref = ref[x - 50:x, y - 50:y, :]
-			patch_noisy = noisy[x - 50:x, y - 50:y, :]
-			if patch_ref.shape[0] != 50 or patch_ref.shape[1] != 50:
+	for x in range(33, 3000, 33):
+		for y in range(33, 3000, 33):
+			patch_ref = ref[x - 33:x, y - 33:y, :]
+			patch_noisy = noisy[x - 33:x, y - 33:y, :]
+			if patch_ref.shape[0] != 33 or patch_ref.shape[1] != 33:
 				continue
 			patch_list.append({'ref': patch_ref, 'noisy': patch_noisy})
 	return patch_list

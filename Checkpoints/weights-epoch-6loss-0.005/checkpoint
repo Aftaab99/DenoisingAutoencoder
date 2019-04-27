@@ -1,6 +1,0 @@
-model_checkpoint_path: "weights-epoch-6loss-0.005.ckpt"
-all_model_checkpoint_paths: "../weights-epoch-2loss-0.009/weights-epoch-2loss-0.009.ckpt"
-all_model_checkpoint_paths: "../weights-epoch-3loss-0.007/weights-epoch-3loss-0.007.ckpt"
-all_model_checkpoint_paths: "../weights-epoch-4loss-0.006/weights-epoch-4loss-0.006.ckpt"
-all_model_checkpoint_paths: "../weights-epoch-5loss-0.005/weights-epoch-5loss-0.005.ckpt"
-all_model_checkpoint_paths: "weights-epoch-6loss-0.005.ckpt"
