@@ -28,14 +28,14 @@ The model doesn't have a fixed input shape so for smaller images(<400x400px), th
 The model was trained for 25 epochs on Google colab's GPU(NVIDIA Tesla k8).
 
 1. Reference:
-![Reference Image](https://github.com/Aftaab99/DenoisingAutoencoder/blob/master/images/reference.bmp  "Reference Image")
+![Reference Image](https://github.com/Aftaab99/DenoisingAutoencoder/blob/master/reference.bmp  "Reference Image")
 
 2. Noisy
-![Noisy Image](https://github.com/Aftaab99/DenoisingAutoencoder/blob/master/images/noisy.bmp "Noisy Image")
+![Noisy Image](https://github.com/Aftaab99/DenoisingAutoencoder/blob/master/noisy.bmp "Noisy Image")
 
 3. Denoised
 
-![Denoised Image](https://github.com/Aftaab99/DenoisingAutoencoder/blob/master/images/denoised.bmp  "Denoised Image")
+![Denoised Image](https://github.com/Aftaab99/DenoisingAutoencoder/blob/master/denoised.bmp  "Denoised Image")
 
 ### References
 1. J. Anaya, A. Barbu. RENOIR - A Dataset for Real Low-Light Image Noise Reduction.([arxiv](https://arxiv.org/abs/1409.8230))
