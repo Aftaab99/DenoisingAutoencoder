@@ -1,6 +1,6 @@
 ## Denoising Autoencoder
 Implementation of a denoising autoencoder trained on the RENOIR dataset(MI 3 images). 
-[Model Architecture](https://github.com/titu1994/Image-Super-Resolution/blob/master/architectures/Denoise.png)
+![Model Architecture](https://github.com/titu1994/Image-Super-Resolution/blob/master/architectures/Denoise.png)
 
 ## Setting up locally
 
